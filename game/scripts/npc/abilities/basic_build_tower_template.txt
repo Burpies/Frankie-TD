@@ -1,0 +1,78 @@
+//=====================================================================
+// Template for Basic Towers (Ability)
+// Instructions:
+// 1. Read comments for instructions 
+// 2. Replace values 
+// 3. Remove end-of-line comments when finished
+// Full KV Docs - http://moddota.com/forums/discussion/14/datadriven-ability-breakdown-documentation 
+//=====================================================================
+
+//=====================================================================
+// Ability: Build tower_name
+//=====================================================================
+
+"build_tower_name"
+{
+	"BaseClass"             		"ability_datadriven"	//DO NOT CHANGE
+	"AbilityTextureName"			"build_naturepool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
+	"MaxLevel" 						"1"						//DO NOT CHANGE
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	//use your head and the documentation to see what's right
+	"AbilityCastPoint"				"0"						//time before spell goes off; generally do not change
+
+	//-----------------------------------------------------------------
+	// BuildingHelper KVs
+	// For full KV documentation - https://github.com/MNoya/BuildingHelper/wiki/KeyValues
+	//-----------------------------------------------------------------
+
+	// Essential
+	"Building"						"1" 			//DO NOT CHANGE - Marks this as a building ability.
+	"AbilityCastRange"				"200" 			//DO NOT CHANGE - Max range at which the building will be placed.
+	"AbilityGoldCost"				"10"			//Gold cost for building placement.
+	"BuildTime"						"1.0" 			//Time it takes to complete this building.
+	"PlayerCanControl"				"1" 			//DO NOT CHANGE - Whether the building is controllable by the placer.
+	"Scale"							"0" 			//DO NOT CHANGE - Whether the building should scale progressively or start at full size.
+	"UnitName"						"tower_naturepool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
+
+	// Extra
+	//"OverrideBuildingGhost" 		"[string]" 		//npc_dota_hero to override, necessary when UnitName is hero-based with AttachWearables.
+	"AbilityCooldown"				"0"				//DO NOT CHANGE - Seconds between building placement.
+	//"MaxScale"					"[number]"		//Final model size. By omission, the unit's ModelScale will be used instead.
+
+	//Behaviors
+	//"BuilderInside"					"1" 		//Hides the builder the building during construction.
+	//"ConsumesBuilder"					"1"			//Kills the builder after the construction is done.
+	//"RequiresRepair"					"1"			//Place the building and doesn't update its health nor send the OnConstructionCompleted callback until its fully healed.
+
+	//-----------------------------------------------------------------
+	// Tooltips for tower abilities
+	//-----------------------------------------------------------------
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"	//DO NOT CHANGE
+			"build_time"			"1.0"			//tooltip for build time
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"	//DO NOT CHANGE
+			"gold_cost"				"10"			//tooltip for gold cost
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"	//DO NOT CHANGE
+			"lumber_cost"			"0"				//tooltip for lumber cost
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"builder.lua"
+			"Function"		"Build"
+		}
+	}
+}

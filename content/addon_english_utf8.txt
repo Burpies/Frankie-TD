@@ -1,0 +1,46 @@
+﻿"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{		
+		"game_mode_15"				"Frankie TD"
+		"addon_game_name"			"Frankie TD" //name on load screen
+
+		// DOTA 2 MODKIT GENERATED TOOLTIPS FOR: frankietd
+		// Keys already defined in addon_english.txt are not listed, nor are Modifiers with the property "IsHidden" "1".
+
+		// ******************** HEROES ********************
+		"npc_dota_hero_kunkka"                                                            "Captain Frankie"
+
+		// ******************** UNITS ********************
+		"tower_name"                                                                      "Tower Name"
+		"sheep"                                                                           "Sheep"
+		"tower_naturepool"                                                                "Tower Naturepool"
+		"captain_frankie"                                                                 "Captain Frankie"
+
+		// ******************** ABILITY MODIFIERS ********************
+
+		// ******************** ITEM MODIFIERS ********************
+
+		// ******************** ABILITIES ********************
+		"DOTA_Tooltip_ability_build_tower_name"                                           "Build Tower Name"
+		"DOTA_Tooltip_ability_build_tower_name_Description"                               ""
+		"DOTA_Tooltip_ability_build_tower_name_build_time"                                "BUILD TIME:"
+		"DOTA_Tooltip_ability_build_tower_name_gold_cost"                                 "GOLD COST:"
+		"DOTA_Tooltip_ability_build_tower_name_lumber_cost"                               "LUMBER COST:"
+
+		"DOTA_Tooltip_ability_tower_sell_building"                                        "Tower Sell Building"
+		"DOTA_Tooltip_ability_tower_sell_building_Description"                            ""
+
+		"DOTA_Tooltip_ability_build_naturepool"                                           "Build Naturepool"
+		"DOTA_Tooltip_ability_build_naturepool_Description"                               ""
+		"DOTA_Tooltip_ability_build_naturepool_build_time"                                "BUILD TIME:"
+		"DOTA_Tooltip_ability_build_naturepool_gold_cost"                                 "GOLD COST:"
+		"DOTA_Tooltip_ability_build_naturepool_lumber_cost"                               "LUMBER COST:"
+
+
+		// ******************** ITEMS ********************
+
+
+	}
+}

@@ -1,0 +1,50 @@
+//Sell Ability
+
+    "tower_sell_building"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"sell_building"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+	"AbilityCastPoint"				"0"
+
+	"precache"
+        {
+        "soundfile"         "sounds/items/item_handofmidas.vsnd"
+        "particle"          "particles/items2_fx/hand_of_midas_radial.vpcf"
+        }
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"              "0"
+        "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+
+        // Time     
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"               "1 1 1 1"
+    
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"               "0 0 0 0"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"builder.lua"
+			"Function"		"SellBuilding"
+		}
+
+		"FireSound"
+            {
+                "EffectName"    "DOTA_Item.Hand_Of_Midas"
+                "Target"        "CASTER"
+            }
+
+            "AttachEffect"
+            {
+                "EffectName"    "particles/items2_fx/hand_of_midas_radial.vpcf"
+                "Target"        "CASTER"
+                "EffectAttachType"  "attach_hitloc"
+            }
+	}
+}

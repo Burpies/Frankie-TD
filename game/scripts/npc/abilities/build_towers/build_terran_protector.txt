@@ -1,0 +1,70 @@
+//=====================================================================
+// Template for Basic Towers (Ability)
+// Instructions:
+// 1. Read comments for instructions 
+// 2. Replace values 
+// 3. Remove end-of-line comments when finished
+// Full KV Docs - http://moddota.com/forums/discussion/14/datadriven-ability-breakdown-documentation 
+//=====================================================================
+
+//=====================================================================
+// Ability: Build terran_protector
+//=====================================================================
+
+"build_terran_protector"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"build_terran_protector"
+	"MaxLevel" 						"1"					
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityCastPoint"				"0"
+
+	//-----------------------------------------------------------------
+	// BuildingHelper KVs
+	// For full KV documentation - https://github.com/MNoya/BuildingHelper/wiki/KeyValues
+	//-----------------------------------------------------------------
+
+	// Essential
+	"Building"						"1"
+	"AbilityCastRange"				"200"
+	"AbilityGoldCost"				"40"			
+	"BuildTime"						"1.0" 			
+	"PlayerCanControl"				"1" 			
+	"Scale"							"0" 		
+	"UnitName"						"tower_terran_protector"
+
+	"AbilityCooldown"				"0"				
+
+	//-----------------------------------------------------------------
+	// Tooltips for tower abilities
+	//-----------------------------------------------------------------
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"	//DO NOT CHANGE
+			"build_time"			"1.0"			//tooltip for build time
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"	//DO NOT CHANGE
+			"gold_cost"				"40"			//tooltip for gold cost
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"	//DO NOT CHANGE
+			"lumber_cost"			"0"				//tooltip for lumber cost
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"builder.lua"
+			"Function"		"Build"
+		}
+	}
+}

@@ -1,0 +1,135 @@
+//=====================================================================
+// Template for Basic Towers
+// Instructions:
+// 1. Read comments for instructions 
+// 2. Replace values 
+// 3. Remove end-of-line comments when finished
+// Full KV Docs - https://moddota.com/forums/discussion/224/datadriven-units 
+//=====================================================================
+
+//=====================================================================
+// Tower: tower_name
+//=====================================================================
+
+"tower_name"
+{
+
+	//-----------------------------------------------------------------
+	// BuildingHelper KVs
+	// For full KV documentation - https://github.com/MNoya/BuildingHelper/wiki/KeyValues
+	//-----------------------------------------------------------------
+
+	"ConstructionSize"			"2"						//DO NOT CHANGE - Blocks construction of other buildings in this area. Requires a valid square of this same size.
+	"BlockPathingSize"			"2"						//DO NOT CHANGE - Blocks pathing with obstruction entities, for mazing. It can be 0.
+	"DisableTurning"			"0"						//DO NOT CHANGE - Whether the building should hide its turning-rotation or not.
+	//"DestructionEffect"		[.vpcf string]			//maybe in the future - The particle effect to play when the building is destroyed.
+	//"FireEffect"				[.vpcf string]			//maybe in the future - The particle effect to play when the building is below the FIRE_EFFECT_FACTOR (0.5 default).
+	//"ModelRotation"			[angle number]			//probably useless - Rotates the building by a certain amount for particle ghost and placement.
+	//"ModelOffset"				[angle number]			//probably useless - Positions the building at a height offset from the ground.
+
+	//-----------------------------------------------------------------
+	// General
+	//-----------------------------------------------------------------
+
+	"BaseClass"					"npc_dota_creature"		//DO NOT CHANGE
+	"Level"						"1"						//DO NOT CHANGE
+	"Model"						"models/props_structures/good_statue008.vmdl" //find model in the Asset Browser (Hammer)... remember to PRECACHE
+	"ModelScale"				"0.6"					//use to change size; generally do not change			
+	"HasInventory"				"1"						//DO NOT CHANGE
+	"ConsideredHero"			"1"						//DO NOT CHANGE
+
+	//-----------------------------------------------------------------
+	// Abilities (Will revise)
+	//-----------------------------------------------------------------
+
+	"AbilityLayout"				"4"
+	"Ability1"					"tower_sell_building"
+	"Ability2"					"sven_great_cleave_datadriven"
+	//"Ability3"					""
+	//"Ability4"				""
+
+	//-----------------------------------------------------------------
+	// Armor
+	//-----------------------------------------------------------------
+
+	"ArmorPhysical"				"5"					//DO NOT CHANGE
+	"MagicalResistance"			"0"					//DO NOT CHANGE
+
+	//-----------------------------------------------------------------	
+	// Attack
+	//-----------------------------------------------------------------
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	//change attack type; generally do not change
+	"AttackDamageMin"			"4.0"				// Damage range min
+	"AttackDamageMax"			"4.0"				// Damage range max
+	"AttackRate"				"0.9"				// Speed of attack
+	"AttackAnimationPoint"		"0.6"				// Normalized time in animation cycle to attack
+	"AttackAcquisitionRange"	"750"				// Range within a target can be acquired
+	"AttackRange"				"750"				// Range within a target can be attacked
+	"AttackRangeBuffer"         "100"     			// Extra range the target can move without canceling the attack
+
+	"ProjectileModel"			"particles/units/heroes/hero_chen/chen_base_attack.vpcf"	//find model in the Asset Browser (Hammer)... remember to PRECACHE
+	"ProjectileSpeed"			"1500"				// Speed of projectile
+
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"		//DO NOT CHANGE
+
+	//-----------------------------------------------------------------
+	// Bounty (Max bounty determines selling price)
+	//-----------------------------------------------------------------
+
+	"BountyGoldMin"				"10.0"
+	"BountyGoldMax"				"10.0"
+
+	//-----------------------------------------------------------------	
+	// Bounds
+	//-----------------------------------------------------------------
+
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	//DO NOT CHANGE
+	"RingRadius"				"100"					//DO NOT CHANGE
+	"HealthBarOffset"			"100"					//DO NOT CHANGE
+
+	//-----------------------------------------------------------------	
+	// Movement
+	//-----------------------------------------------------------------
+
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	//DO NOT CHANGE
+	"MovementSpeed"				"0"							//DO NOT CHANGE
+
+	//-----------------------------------------------------------------
+	// Status
+	//-----------------------------------------------------------------
+
+	"StatusHealth"				"100"			//DO NOT CHANGE
+	"StatusHealthRegen"			"0"				//DO NOT CHANGE
+	"StatusMana"				"100"			//change base mana; generally do not change
+	"StatusManaRegen"			"0"				//change mana regen; generally do not change
+	//"StatusStartingMana"		"[int]"			//change starting mana; rarely used
+	
+	//-----------------------------------------------------------------
+	// Armor and Attack Types
+	//-----------------------------------------------------------------
+
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			//attack type; normal,pierce,siege,chaos,hero
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		//DO NOT CHANGE
+
+	//-----------------------------------------------------------------
+	// Unit Relationship Class (Probably deprecated)
+	//-----------------------------------------------------------------
+
+	"TeamName"					"DOTA_TEAM_NEUTRALS"						//DO NOT CHANGE
+	"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	//DO NOT CHANGE
+
+	//-----------------------------------------------------------------	
+	// Vision
+	//-----------------------------------------------------------------
+
+	"VisionDaytimeRange"		"1800"		//DO NOT CHANGE
+	"VisionNighttimeRange"		"1800"		//DO NOT CHANGE
+
+	//-----------------------------------------------------------------	
+	// LUA Script
+	//-----------------------------------------------------------------
+
+	//"vscripts"				[name_of_script_file]	//optional
+	
+}
