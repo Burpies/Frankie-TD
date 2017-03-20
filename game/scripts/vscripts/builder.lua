@@ -158,3 +158,10 @@ end
 function SellBuilding( keys )
     BuildingHelper:SellBuilding(keys)
 end
+
+-- Called when upgrade_tower_name ability is used
+function UpgradeBuilding( keys )
+    local caster = keys.caster
+    local new_tower = keys.newtower
+    BuildingHelper:UpgradeBuilding(caster,new_tower)
+end
