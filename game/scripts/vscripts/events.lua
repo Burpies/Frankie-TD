@@ -219,7 +219,6 @@ end
 function FrankieTD:OnEntityKilled( keys )
   DebugPrint( '[FRANKIETD] OnEntityKilled Called' )
   DebugPrintTable( keys )
-  
 
   -- The Unit that was Killed
   local killedUnit = EntIndexToHScript( keys.entindex_killed )
@@ -240,6 +239,8 @@ function FrankieTD:OnEntityKilled( keys )
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
   -- Put code here to handle when an entity gets killed
+  CheckIfCreep(keys.entindex_killed)
+
 end
 
 

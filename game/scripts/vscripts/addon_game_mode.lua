@@ -48,6 +48,7 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_enigma", context)
   PrecacheUnitByNameSync("captain_frankie", context)
   PrecacheUnitByNameSync("sheep", context)
+  PrecacheUnitByNameSync("pigs", context)
 end
 
 -- Create the game mode when we activate
