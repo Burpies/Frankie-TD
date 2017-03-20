@@ -17,5 +17,4 @@
 	"DOTA_Custom8"    								"Purple Horse"
 	
 	"addonname"										"Frankie TD"
-	"npc_dota_hero_kunkka_hype"			"Captain Frankie has the most insane memory known to mankind."
 }
