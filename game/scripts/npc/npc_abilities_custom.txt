@@ -16,7 +16,7 @@
 	"build_tower_name"
 	{
 		"BaseClass"             		"ability_datadriven"	//DO NOT CHANGE
-		"AbilityTextureName"			"build_naturepool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
+		"AbilityTextureName"			"build_nature_pool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
 		"MaxLevel" 						"1"						//DO NOT CHANGE
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	//use your head and the documentation to see what's right
@@ -34,7 +34,7 @@
 		"BuildTime"						"1.0" 			//Time it takes to complete this building.
 		"PlayerCanControl"				"1" 			//DO NOT CHANGE - Whether the building is controllable by the placer.
 		"Scale"							"0" 			//DO NOT CHANGE - Whether the building should scale progressively or start at full size.
-		"UnitName"						"tower_naturepool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
+		"UnitName"						"tower_nature_pool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
 	
 		// Extra
 		//"OverrideBuildingGhost" 		"[string]" 		//npc_dota_hero to override, necessary when UnitName is hero-based with AttachWearables.
@@ -195,10 +195,10 @@
 	// Ability: Build Nature Pool (Tower)
 	//=====================================================================
 	
-	"build_naturepool"
+	"build_nature_pool"
 	{
 		"BaseClass"             		"ability_datadriven"	//DO NOT CHANGE
-		"AbilityTextureName"			"build_naturepool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
+		"AbilityTextureName"			"build_nature_pool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
 		"MaxLevel" 						"1"						//DO NOT CHANGE
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	//use your head and the documentation to see what's right
@@ -216,7 +216,7 @@
 		"BuildTime"						"1.0" 			//Time it takes to complete this building.
 		"PlayerCanControl"				"1" 			//DO NOT CHANGE - Whether the building is controllable by the placer.
 		"Scale"							"0" 			//DO NOT CHANGE - Whether the building should scale progressively or start at full size.
-		"UnitName"						"tower_naturepool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
+		"UnitName"						"tower_nature_pool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
 	
 		// Extra
 		//"OverrideBuildingGhost" 		"[string]" 		//npc_dota_hero to override, necessary when UnitName is hero-based with AttachWearables.

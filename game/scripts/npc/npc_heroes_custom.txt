@@ -7,11 +7,55 @@
 		"UnitLabel"					"builder"
 	
 		"AbilityLayout"				"5"
-	    "Ability1"                  "build_naturepool"
+	    "Ability1"                  "build_nature_pool"
 	    "Ability2"                  "build_terran_protector"
-	    "Ability3"                  "build_naturepool"
-	    "Ability4"                  "build_naturepool"
-	    "Ability5"                  "build_naturepool"
+	    "Ability3"                  "build_nature_pool"
+	    "Ability4"                  "build_nature_pool"
+	    "Ability5"                  "build_nature_pool"
+		"Ability6" 					""
+		"Ability7"					""
+		"Ability8"					""
+		"Ability9"					""
+		"Ability10"					""
+	
+		"AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "AttackDamageMin"           "0"
+	    "AttackDamageMax"           "0"
+	    "ArmorPhysical"             "0"
+	    "MagicalResistance"         "0"
+	
+	    "StatusHealth"              "50"                            // Base health.
+	    "StatusHealthRegen"         "0.0"                           // Health regeneration rate.
+			
+	    "Level"                     "1"
+	    "VisionDaytimeRange"        "6500" 
+		"VisionNighttimeRange"		"6500"		   				    // Range of vision at night time.
+	    "MovementSpeed"             "425"                           // Speed
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_FLY"
+	
+	    "HasInventory"              "1"
+	
+	    "BoundsHullName"            "DOTA_HULL_SIZE_SMALL"          // Collision size
+	
+	    "AttributeBaseStrength"     "0"
+	    "AttributeStrengthGain"     "0"
+	    "AttributeBaseIntelligence" "0"
+	    "AttributeIntelligenceGain" "0"
+	    "AttributeBaseAgility"      "0"
+	    "AttributeAgilityGain"      "0"
+	}
+	"fire_minion"
+	{
+		"override_hero"				"npc_dota_hero_ember_spirit"
+	
+		"UnitLabel"					"builder"
+	
+		"AbilityLayout"				"5"
+	    "Ability1"                  "build_nature_pool"
+	    "Ability2"                  "build_terran_protector"
+	    "Ability3"                  "build_nature_pool"
+	    "Ability4"                  "build_nature_pool"
+	    "Ability5"                  "build_nature_pool"
 		"Ability6" 					""
 		"Ability7"					""
 		"Ability8"					""
