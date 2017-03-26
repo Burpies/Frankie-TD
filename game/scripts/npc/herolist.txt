@@ -6,7 +6,7 @@
 "CustomHeroList"
 {
 	"npc_dota_hero_kunkka" "-1"
-	"npc_dota_hero_ember_spirit" "-1"
+	"npc_dota_hero_tinker" "-1"
 
 	"npc_dota_hero_ancient_apparition" "0"
 	"npc_dota_hero_antimage" "0"
@@ -53,7 +53,6 @@
 	"npc_dota_hero_storm_spirit" "0"
 	"npc_dota_hero_sven" "0"
 	"npc_dota_hero_tidehunter" "0"
-	"npc_dota_hero_tinker" "0"
 	"npc_dota_hero_tiny" "0"
 	"npc_dota_hero_vengefulspirit" "0"
 	"npc_dota_hero_venomancer"  "0"
@@ -110,6 +109,7 @@
 	"npc_dota_hero_elder_titan" "0"
 	"npc_dota_hero_abaddon" "0"
 	"npc_dota_hero_earth_spirit" "0"
+	"npc_dota_hero_ember_spirit" "0"
 	"npc_dota_hero_legion_commander" "0"
 	"npc_dota_hero_phoenix" "0"
 	"npc_dota_hero_terrorblade" "0"

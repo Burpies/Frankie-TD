@@ -58,8 +58,8 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"38"	
 	"AttackDamageMax"			"47"
-	"AttackRate"				"0.6"				// Speed of attack
-	"AttackAnimationPoint"		"0"				
+	"AttackRate"				"0"				// Speed of attack
+	"AttackAnimationPoint"		"0.6"				
 	"AttackAcquisitionRange"	"700"			
 	"AttackRange"				"700"			
 	"AttackRangeBuffer"         "100"
@@ -128,22 +128,4 @@
 
 	//"vscripts"				[name_of_script_file]	//optional
 	
-	//-----------------------------------------------------------------	
-	// Cosmetics
-	//-----------------------------------------------------------------
-
-    "Creature"
-    {
-        "AttachWearables" // Default npc_dota_hero_lone_druid
-        {
-            "1" { "ItemDef" "108" } // Lone Druid's Shoulder Armor
-            "2" { "ItemDef" "109" } // Lone Druid's Bracers
-            "3" { "ItemDef" "8368" } // Lone Druid's Spirit Bear
-            "4" { "ItemDef" "219" } // Lone Druid's Weapon
-            "5" { "ItemDef" "8648" } // Lone Druid's True Form
-            "6" { "ItemDef" "110" } // Lone Druid's Tunic
-            "7" { "ItemDef" "107" } // Lone Druid's Hair
-        }
-    }
-
 }

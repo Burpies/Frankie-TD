@@ -1,5 +1,437 @@
 "DOTAAbilities"
 {
+	"chain_lightning_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_DEAD | DOTA_UNIT_TARGET_FLAG_NO_INVIS | DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"zuus_arc_lightning"
+		
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+			"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"		"sounds/weapons/hero/zuus/arc_lightning.vsnd"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityDamage"					"100"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"9.00"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"500"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"jump_count"			"4"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"jump_delay"			"0.15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"100"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_percent_add"	"25"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"libraries/abilities/chain_lightning.lua"
+				"Function"		"NewInstance"
+				"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+			}
+			
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_arc_lightning_datadriven"
+				"Target"		"TARGET"
+			}
+		
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
+				"Target"		"CASTER"
+			}
+			
+			
+		}
+	
+		"Modifiers"
+		{
+			"modifier_arc_lightning_datadriven"
+			{
+				"IsHidden"	"1"
+		
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"libraries/abilities/chain_lightning.lua"
+						"Function"		"LightningJump"
+						"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+					}
+				}
+			}
+			"modifier_cast_on_hit"
+	    	{
+		        "Passive" "1" //Apply as soon as the spell is learned
+		        "IsHidden"    "0" //Don't show the aura applier
+	
+		        "Aura"        "cast_on_hit"
+		        "Aura_Radius" "50"
+		        "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		        "Aura_Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		        "Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		        "Aura_ApplyToCaster" "1"   // Not Apply to Self, default is 1
+	    	}
+	
+	   		"cast_on_hit"
+	    	{
+	        	"OnAttack"
+	        	{
+		            "RunScript"
+					{
+						"ScriptFile"	"libraries/abilities/chain_lightning.lua"
+						"Function"		"NewInstance"
+						"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+					}
+			
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_arc_lightning_datadriven"
+						"Target"		"TARGET"
+					}
+					
+					"FireSound"
+					{
+						"EffectName"	"Hero_Zuus.ArcLightning.Cast"
+						"Target"		"CASTER"
+					}
+	        	}
+	    	}
+		}
+	}
+	"ion_shell_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"dark_seer_ion_shell"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+			"particle"			"particles/units/heroes/hero_dark_seer/dark_seer_ion_shell.vpcf"
+			"particle"			"particles/units/heroes/hero_dark_seer/dark_seer_ion_shell_damage.vpcf"
+		}
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"750"
+		"AbilityCastPoint"				"0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"3"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	"0.0"	// just does damage
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"160"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20"
+			}
+			// Extra
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"0.1"
+			}
+		}
+	
+		"OnSpellStart" // OnSpellStart
+		{
+			//"RemoveModifier"
+			//{
+			//	"ModifierName"	"modifier_ion_shell_datadriven"
+			//	"Target" 		"TARGET"
+			//}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_ion_shell_datadriven"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_ion_shell_datadriven"
+			{
+				"IsDebuff"		"1"
+				"IsPurgable"	"1"
+		
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Dark_Seer.Ion_Shield_Start"
+						"Target" 		"TARGET"
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_dark_seer/dark_seer_ion_shell.vpcf"
+						"EffectAttachType"  "attach_hitloc"
+						"Target"            "TARGET"
+	
+						"ControlPoints"
+						{
+							"01"	"100 100 100"
+						}
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Dark_Seer.Ion_Shield_end"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+				}
+	
+				"ThinkInterval"  "%think_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"libraries/abilities/ion_shell.lua"
+						"Function"		"IonShell"
+						"ion_particle"	"particles/units/heroes/hero_dark_seer/dark_seer_ion_shell_damage.vpcf"
+					}
+				}
+			}
+			"modifier_cast_on_hit"
+	    	{
+	        	"Passive" "1" //Apply as soon as the spell is learned
+	        	"IsHidden"    "0" //Don't show the aura applier
+	
+	        	"Aura"        "cast_on_hit"
+	        	"Aura_Radius" "50"
+	       	 	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	        	"Aura_Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	        	"Aura_ApplyToCaster" "1"   // Not Apply to Self, default is 1
+	    	}
+	
+	    	"cast_on_hit"
+	    	{
+	       		 "OnAttack"
+	        	{
+	           		"ApplyModifier"
+	            	{
+	            	"ModifierName"  "modifier_ion_shell_datadriven"
+	            	"Target"        "TARGET"
+	            	"Duration"      "%duration"
+	            	}
+	        	}
+	    	}
+		}
+	}
+	"thunder_rod_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"zuus_static_field"
+		
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_zuus/zuus_static_field.vpcf"
+			"soundfile"		"sounds/weapons/hero/zuus/static_field.vsnd"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityDamage"					"100"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityCooldown"				"9.00"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage_health_pct"	"25"
+			}
+		}
+	
+		"Modifiers"
+		{
+			//"modifier_thunder_rod_datadriven"
+			//{
+			//	"IsHidden"	"1"
+		
+			//	"OnCreated"
+			//	{
+			//		"RunScript"
+			//		{
+			//			"ScriptFile"	"libraries/abilities/thunder_rod.lua"
+			//			"Function"		"RemoveHealth"
+			//			"sound"			"Hero_Zuus.StaticField"
+			//			"particle"		"particles/units/heroes/hero_zuus/zuus_static_field.vpcf"
+			//		}
+			//	}
+			//}
+			"modifier_cast_on_hit"
+	    	{
+		        "Passive" "1" //Apply as soon as the spell is learned
+		        "IsHidden"    "0" //Don't show the aura applier
+	
+		        "Aura"        "cast_on_hit"
+		        "Aura_Radius" "50"
+		        "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		        "Aura_Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		        "Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		        "Aura_ApplyToCaster" "1"   // Not Apply to Self, default is 1
+	    	}
+	
+	   		"cast_on_hit"
+	    	{
+	        	"OnAttack"
+	        	{
+		            "RunScript"
+					{
+						"ScriptFile"	"libraries/abilities/thunder_rod.lua"
+						"Function"		"RemoveHealth"
+						"sound"			"Hero_Zuus.StaticField"
+						"particle"		"particles/units/heroes/hero_zuus/zuus_static_field.vpcf"
+					}
+			
+					//"ApplyModifier"
+					//{
+					//	"ModifierName"	"modifier_thunder_rod_datadriven"
+					//	"Target"		"TARGET"
+					//}
+	        	}
+	    	}
+		}
+	}
+	"Modifiers"
+	{
+	    "modifier_cast_on_hit"
+	    {
+	        "Passive" "1" //Apply as soon as the spell is learned
+	        "IsHidden"    "0" //Don't show the aura applier
+	
+	        "Aura"        "cast_on_hit"
+	        "Aura_Radius" "50"
+	        "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	        "Aura_Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        "Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	        "Aura_ApplyToCaster" "1"   // Not Apply to Self, default is 1
+	    }
+	
+	    "cast_on_hit"
+	    {
+	        "OnAttack"
+	        {
+	            "ApplyModifier"
+	            {
+	            "ModifierName"  "modifier_ion_shell_datadriven" //change for each individual spell
+	            "Target"        "TARGET"
+	            "Duration"      "%duration"
+	            }
+	        }
+	    }
+	}
 	//=====================================================================
 	// Template for Basic Towers (Ability)
 	// Instructions:
@@ -16,7 +448,7 @@
 	"build_tower_name"
 	{
 		"BaseClass"             		"ability_datadriven"	//DO NOT CHANGE
-		"AbilityTextureName"			"build_nature_pool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
+		"AbilityTextureName"			"build_naturepool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
 		"MaxLevel" 						"1"						//DO NOT CHANGE
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	//use your head and the documentation to see what's right
@@ -34,7 +466,7 @@
 		"BuildTime"						"1.0" 			//Time it takes to complete this building.
 		"PlayerCanControl"				"1" 			//DO NOT CHANGE - Whether the building is controllable by the placer.
 		"Scale"							"0" 			//DO NOT CHANGE - Whether the building should scale progressively or start at full size.
-		"UnitName"						"tower_nature_pool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
+		"UnitName"						"tower_naturepool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
 	
 		// Extra
 		//"OverrideBuildingGhost" 		"[string]" 		//npc_dota_hero to override, necessary when UnitName is hero-based with AttachWearables.
@@ -75,6 +507,98 @@
 			{
 				"ScriptFile"	"builder.lua"
 				"Function"		"Build"
+			}
+		}
+	}
+	"build_sparkler"
+	{
+		"BaseClass"             		"ability_datadriven"	
+		"AbilityTextureName"			"build_sparkler"		
+		"MaxLevel" 						"1"	
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+		"AbilityCastPoint"				"0"						
+	
+	
+		"Building"						"1" 			
+		"AbilityCastRange"				"200" 			
+		"AbilityGoldCost"				"285"			
+		"BuildTime"						"1.0" 			
+		"PlayerCanControl"				"1" 			
+		"Scale"							"0" 			
+		"UnitName"						"tower_sparkler"
+	
+	
+		"AbilityCooldown"				"0"				
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"	
+				"build_time"			"1.0"			
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"	
+				"gold_cost"				"285"			
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_cost"			"0"				
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"Build"
+			}
+		}
+	}
+	"satyr_trickster_purge_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"MaxLevel"						"1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	
+		// Unit Targeting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"1.0"
+		"AbilityManaCost"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"purge_rate"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"15.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"summon_damage"			"400"
 			}
 		}
 	}
@@ -182,6 +706,211 @@
 	            }
 		}
 	}
+	//Upgrade Ability
+	
+	    "upgrade_static_purger"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"tower_static_purger"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityCastPoint"				"0"
+	
+		"precache"
+	        {
+	        "soundfile"         "sounds/items/item_handofmidas.vsnd"
+	        "particle"          "particles/items2_fx/hand_of_midas_radial.vpcf"
+	        }
+	
+	        // Casting
+	        //-------------------------------------------------------------------------------------------------------------
+	        "AbilityCastRange"              "0"
+	        "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	        "AbilityGoldCost"               "25"
+	
+	        // Time     
+	        //-------------------------------------------------------------------------------------------------------------
+	        "AbilityCooldown"               "1 1 1 1"
+	    
+	        // Cost
+	        //-------------------------------------------------------------------------------------------------------------
+	        "AbilityManaCost"               "0 0 0 0"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				//"ScriptFile"	"libraries/buildinghelper.lua"
+	            "ScriptFile"    "builder.lua"
+				"Function"		"UpgradeBuilding"
+	            "newtower"      "tower_static_purger"
+			}
+	
+			"FireSound"
+	            {
+	                "EffectName"    "DOTA_Item.Hand_Of_Midas"
+	                "Target"        "CASTER"
+	            }
+	
+	            "AttachEffect"
+	            {
+	                "EffectName"    "particles/items2_fx/hand_of_midas_radial.vpcf"
+	                "Target"        "CASTER"
+	                "EffectAttachType"  "attach_hitloc"
+	            }
+		}
+	}
+	//Upgrade Ability
+	
+	    "upgrade_static_shocker"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"tower_static_shocker"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityCastPoint"				"0"
+	
+		"precache"
+	        {
+	        "soundfile"         "sounds/items/item_handofmidas.vsnd"
+	        "particle"          "particles/items2_fx/hand_of_midas_radial.vpcf"
+	        }
+	
+	        // Casting
+	        //-------------------------------------------------------------------------------------------------------------
+	        "AbilityCastRange"              "0"
+	        "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	        "AbilityGoldCost"               "30"
+	
+	        // Time     
+	        //-------------------------------------------------------------------------------------------------------------
+	        "AbilityCooldown"               "1 1 1 1"
+	    
+	        // Cost
+	        //-------------------------------------------------------------------------------------------------------------
+	        "AbilityManaCost"               "0 0 0 0"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"    "builder.lua"
+				"Function"		"UpgradeBuilding"
+	            "newtower"      "tower_static_shocker"
+			}
+	
+			"FireSound"
+	            {
+	                "EffectName"    "DOTA_Item.Hand_Of_Midas"
+	                "Target"        "CASTER"
+	            }
+	
+	            "AttachEffect"
+	            {
+	                "EffectName"    "particles/items2_fx/hand_of_midas_radial.vpcf"
+	                "Target"        "CASTER"
+	                "EffectAttachType"  "attach_hitloc"
+	            }
+		}
+	}
+	"build_battery"
+	{
+		"BaseClass"             		"ability_datadriven"	
+		"AbilityTextureName"			"build_battery"		
+		"MaxLevel" 						"1"	
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+		"AbilityCastPoint"				"0"						
+	
+	
+		"Building"						"1" 			
+		"AbilityCastRange"				"200" 			
+		"AbilityGoldCost"				"350"			
+		"BuildTime"						"1.0" 			
+		"PlayerCanControl"				"1" 			
+		"Scale"							"0" 			
+		"UnitName"						"tower_battery"
+	
+	
+		"AbilityCooldown"				"0"				
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"	
+				"build_time"			"1.0"			
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"	
+				"gold_cost"				"350"			
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_cost"			"0"				
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"Build"
+			}
+		}
+	}
+	"build_chain_lightning_caster"
+	{
+		"BaseClass"             		"ability_datadriven"	
+		"AbilityTextureName"			"build_chain_lightning_caster"		
+		"MaxLevel" 						"1"	
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+		"AbilityCastPoint"				"0"						
+	
+	
+		"Building"						"1" 			
+		"AbilityCastRange"				"200" 			
+		"AbilityGoldCost"				"100"			
+		"BuildTime"						"1.0" 			
+		"PlayerCanControl"				"1" 			
+		"Scale"							"0" 			
+		"UnitName"						"tower_chain_lightning_caster"
+	
+	
+		"AbilityCooldown"				"0"				
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"	
+				"build_time"			"1.0"			
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"	
+				"gold_cost"				"100"			
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_cost"			"0"				
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"Build"
+			}
+		}
+	}
 	//=====================================================================
 	// Template for Basic Towers
 	// Instructions:
@@ -195,10 +924,10 @@
 	// Ability: Build Nature Pool (Tower)
 	//=====================================================================
 	
-	"build_nature_pool"
+	"build_naturepool"
 	{
 		"BaseClass"             		"ability_datadriven"	//DO NOT CHANGE
-		"AbilityTextureName"			"build_nature_pool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
+		"AbilityTextureName"			"build_naturepool"		//spellicon - put image in 'game/.../.../resource/flash3/images/spellicons' (without extension)
 		"MaxLevel" 						"1"						//DO NOT CHANGE
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	//use your head and the documentation to see what's right
@@ -216,7 +945,7 @@
 		"BuildTime"						"1.0" 			//Time it takes to complete this building.
 		"PlayerCanControl"				"1" 			//DO NOT CHANGE - Whether the building is controllable by the placer.
 		"Scale"							"0" 			//DO NOT CHANGE - Whether the building should scale progressively or start at full size.
-		"UnitName"						"tower_nature_pool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
+		"UnitName"						"tower_naturepool" 	//The unit to build. With the special keyworld "self", the builder will place itself as the new building.
 	
 		// Extra
 		//"OverrideBuildingGhost" 		"[string]" 		//npc_dota_hero to override, necessary when UnitName is hero-based with AttachWearables.
@@ -248,6 +977,108 @@
 			{
 				"var_type"				"FIELD_INTEGER"	//DO NOT CHANGE
 				"lumber_cost"			"0"				//tooltip for lumber cost
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"Build"
+			}
+		}
+	}
+	
+	
+	"build_shock_tower"
+	{
+		"BaseClass"             		"ability_datadriven"	
+		"AbilityTextureName"			"build_shock_tower"		
+		"MaxLevel" 						"1"	
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+		"AbilityCastPoint"				"0"						
+	
+	
+		"Building"						"1" 			
+		"AbilityCastRange"				"200" 			
+		"AbilityGoldCost"				"10"			
+		"BuildTime"						"1.0" 			
+		"PlayerCanControl"				"1" 			
+		"Scale"							"0" 			
+		"UnitName"						"tower_shock_tower"
+	
+	
+		"AbilityCooldown"				"0"				
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"	
+				"build_time"			"1.0"			
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"	
+				"gold_cost"				"10"			
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_cost"			"0"				
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"Build"
+			}
+		}
+	}
+	"build_storm_caller"
+	{
+		"BaseClass"             		"ability_datadriven"	
+		"AbilityTextureName"			"build_storm_caller"		
+		"MaxLevel" 						"1"	
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+		"AbilityCastPoint"				"0"						
+	
+	
+		"Building"						"1" 			
+		"AbilityCastRange"				"200" 			
+		"AbilityGoldCost"				"40"			
+		"BuildTime"						"1.0" 			
+		"PlayerCanControl"				"1" 			
+		"Scale"							"0" 			
+		"UnitName"						"tower_storm_caller"
+	
+	
+		"AbilityCooldown"				"0"				
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"	
+				"build_time"			"1.0"			
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"	
+				"gold_cost"				"10"			
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_cost"			"0"				
 			}
 		}
 	
@@ -318,6 +1149,56 @@
 			{
 				"var_type"				"FIELD_INTEGER"	//DO NOT CHANGE
 				"lumber_cost"			"0"				//tooltip for lumber cost
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"builder.lua"
+				"Function"		"Build"
+			}
+		}
+	}
+	"build_thunder_rod"
+	{
+		"BaseClass"             		"ability_datadriven"	
+		"AbilityTextureName"			"build_thunder_rod"		
+		"MaxLevel" 						"1"	
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+		"AbilityCastPoint"				"0"						
+	
+	
+		"Building"						"1" 			
+		"AbilityCastRange"				"200" 			
+		"AbilityGoldCost"				"200"			
+		"BuildTime"						"1.0" 			
+		"PlayerCanControl"				"1" 			
+		"Scale"							"0" 			
+		"UnitName"						"tower_thunder_rod"
+	
+	
+		"AbilityCooldown"				"0"				
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"	
+				"build_time"			"1.0"			
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"	
+				"gold_cost"				"200"			
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_cost"			"0"				
 			}
 		}
 	

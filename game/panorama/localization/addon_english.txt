@@ -17,6 +17,4 @@
 	"DOTA_Custom8"    								"Purple Horse"
 	
 	"addonname"										"Frankie TD"
-	"npc_dota_hero_kunkka_hype"			"Captain Frankie has the most insane memory known to mankind."
-	"npc_dota_hero_ember_spirit_hype"	"Summons the powers of fire to aid you. Fire towers have moderate damage and splash damage. Fire Towers do extra damage to Heavy Armor, but reduced to Fortified and Light."
 }

@@ -1,0 +1,50 @@
+"build_storm_caller"
+{
+	"BaseClass"             		"ability_datadriven"	
+	"AbilityTextureName"			"build_storm_caller"		
+	"MaxLevel" 						"1"	
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
+	"AbilityCastPoint"				"0"						
+
+
+	"Building"						"1" 			
+	"AbilityCastRange"				"200" 			
+	"AbilityGoldCost"				"40"			
+	"BuildTime"						"1.0" 			
+	"PlayerCanControl"				"1" 			
+	"Scale"							"0" 			
+	"UnitName"						"tower_storm_caller"
+
+
+	"AbilityCooldown"				"0"				
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"	
+			"build_time"			"1.0"			
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"	
+			"gold_cost"				"10"			
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lumber_cost"			"0"				
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"builder.lua"
+			"Function"		"Build"
+		}
+	}
+}

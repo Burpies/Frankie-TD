@@ -1,115 +1,6 @@
 "DOTAUnits"
 {
 	//=====================================================================
-	// Template for Creep Waves
-	// Instructions:
-	// 1. Read comments for instructions 
-	// 2. Replace values 
-	// 3. Remove end-of-line comments when finished
-	// Full KV Docs - https://moddota.com/forums/discussion/224/datadriven-units 
-	//=====================================================================
-	
-	//=================================================================================	
-	// Creep Wave 1: creep_name
-	//=================================================================================
-	"creep_name"
-	{
-		//-----------------------------------------------------------------
-		// General
-		//-----------------------------------------------------------------
-	
-		"BaseClass"					"npc_dota_creature"	//DO NOT CHANGE
-		"Level"						"25"
-		"ModelScale"				"1"
-		"MinimapIcon"               "minimap_candybucket"
-		"MinimapIconSize"           "500"
-		"Model"						"models/courier/mighty_boar/mighty_boar_wings.vmdl"	//find model in the Asset Browser (Hammer)... remember to PRECACHE
-	
-		"DisableClumpingBehavior"   "0"
-		//"IsAncient"                 "1"
-				
-		//-----------------------------------------------------------------
-		// Abilities (Will revise)
-		//-----------------------------------------------------------------
-	
-		"AbilityLayout"				"4"
-		//"Ability1"				"tower_sell_building"
-		//"Ability2"				"sven_great_cleave_datadriven"
-		//"Ability3"				""
-		//"Ability4"				""
-	
-		//-----------------------------------------------------------------
-		// Armor
-		//-----------------------------------------------------------------
-	
-		"ArmorPhysical"				"5"		
-		"MagicalResistance"			"0"
-	
-		//-----------------------------------------------------------------	
-		// Attack
-		//-----------------------------------------------------------------
-	
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-	
-		//-----------------------------------------------------------------
-		// Bounty (Max bounty determines selling price)
-		//-----------------------------------------------------------------
-	
-		"BountyGoldMin"				"1"
-		"BountyGoldMax"				"1"
-	
-	
-		//-----------------------------------------------------------------	
-		// Bounds
-		//-----------------------------------------------------------------
-	
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	//DO NOT CHANGE
-		"RingRadius"				"100"					//DO NOT CHANGE
-		"HealthBarOffset"			"100"					//DO NOT CHANGE
-	
-	
-		//-----------------------------------------------------------------	
-		// Movement
-		//-----------------------------------------------------------------
-	
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"350"		// Speed
-		"MovementTurnRate"          "10"		// Turning rate.
-		"FollowRange"               "0"
-	
-		//-----------------------------------------------------------------
-		// Status
-		//-----------------------------------------------------------------
-	
-		"StatusHealth"				"500"			
-		"StatusHealthRegen"			"0"				
-		"StatusMana"				"100"			//change base mana; generally do not change
-		"StatusManaRegen"			"0"				//change mana regen; generally do not change
-		//"StatusStartingMana"		"[int]"			//change starting mana; rarely used
-	
-	
-		//-----------------------------------------------------------------
-		// Armor and Attack Types
-		//-----------------------------------------------------------------
-	
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"	//attack type; basic (normal), pierce, siege, light (chaos), hero
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HEAVY"	//armor type; soft(unarmored), weak (light), basic (medium), strong (heavy), structure (fortified), hero
-	
-		//-----------------------------------------------------------------
-		// Unit Relationship Class (Probably deprecated)
-		//-----------------------------------------------------------------
-	
-		"TeamName"					"DOTA_TEAM_NEUTRALS"						//DO NOT CHANGE
-		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT" 	//DO NOT CHANGE
-		
-		//-----------------------------------------------------------------	
-		// Vision
-		//-----------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1800"		// Range of vision at night time.
-	
-	}
-	//=====================================================================
 	// Template for Basic Towers
 	// Instructions:
 	// 1. Read comments for instructions 
@@ -244,211 +135,519 @@
 		//"vscripts"				[name_of_script_file]	//optional
 		
 	}
-	//=================================================================================	
-	// Creep Wave 1: Sheep
-	//=================================================================================
+	"tower_battery"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/items/rattletrap/cog_tesla/cog_tesla.vmdl" 
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"200"				
+		"AttackDamageMax"			"200"				
+		"AttackRate"				"0.25"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"650"				
+		"AttackRange"				"650"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/units/heroes/hero_razor/razor_plasmafield.vpcf"	
+		"ProjectileSpeed"			"1200"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"		
+	
+	
+		"BountyGoldMin"				"350.0" // 350g battery
+		"BountyGoldMax"				"350.0"
+	
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"				
+		"HealthBarOffset"			"100"				
+	
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+	
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		//-----------------------------------------------------------------	
+		// LUA Script
+		//-----------------------------------------------------------------
+	
+		//"vscripts"				[name_of_script_file]	//optional
+	}
+	"tower_chain_lightning_caster"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl"
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+		"Ability2"					"chain_lightning_datadriven"
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"1.0"				
+		"AttackDamageMax"			"1.0"				
+		"AttackRate"				"9"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"700"				
+		"AttackRange"				"700"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/units/heroes/hero_arc_warden/arc_warden_base_attack.vpcf"	
+		"ProjectileSpeed"			"3000"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"	
+	
+		"BountyGoldMin"				"100.0"
+		"BountyGoldMax"				"100.0"
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"					
+		"HealthBarOffset"			"100"					
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+		
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		
+	}
+	"tower_sparkler"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl" 
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"250"				
+		"AttackDamageMax"			"250"				
+		"AttackRate"				"0.5"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"700"				
+		"AttackRange"				"700"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/units/heroes/hero_chen/chen_holy_persuasion_sparks.vpcf"	
+		"ProjectileSpeed"			"1800"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"		
+	
+	
+		"BountyGoldMin"				"285.0" // 285g sparkler
+		"BountyGoldMax"				"285.0"
+	
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"				
+		"HealthBarOffset"			"100"				
+	
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+	
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		//-----------------------------------------------------------------	
+		// LUA Script
+		//-----------------------------------------------------------------
+	
+		//"vscripts"				[name_of_script_file]	//optional
+	}
+	"tower_static_purger"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl" 
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+		"Ability2"					"satyr_trickster_purge_datadriven"
+		//"Ability3"					""
+		//"Ability4"				""
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"10"				
+		"AttackDamageMax"			"10"				
+		"AttackRate"				"0.2"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"750"				
+		"AttackRange"				"750"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/neutral_fx/satyr_hellcaller_launch.vpcf"	
+		"ProjectileSpeed"			"2000"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"		
+	
+	
+		"BountyGoldMin"				"10.0"
+		"BountyGoldMax"				"10.0"
+	
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"				
+		"HealthBarOffset"			"100"				
+	
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+	
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		//-----------------------------------------------------------------	
+		// LUA Script
+		//-----------------------------------------------------------------
+	
+		//"vscripts"				[name_of_script_file]	//optional
+		
+	}
+	"tower_static_shocker"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl" 
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+		"Ability2"					"ion_shell_datadriven"
+		//"Ability3"				""
+		//"Ability4"				""
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"10"				
+		"AttackDamageMax"			"10"				
+		"AttackRate"				"3"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"750"				
+		"AttackRange"				"750"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/neutral_fx/satyr_hellcaller_launch.vpcf"	
+		"ProjectileSpeed"			"1000"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"		
+	
+	
+		"BountyGoldMin"				"40.0" // 10g shock tower, 30g upgrade
+		"BountyGoldMax"				"40.0"
+	
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"				
+		"HealthBarOffset"			"100"				
+	
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+	
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		//-----------------------------------------------------------------	
+		// LUA Script
+		//-----------------------------------------------------------------
+	
+		//"vscripts"				[name_of_script_file]	//optional
+	
+		"Creature"
+		{
+			"DefaultState"       "Cast"
+			"States"
+			{
+	    		"Cast"
+	    		{
+	        		"Name"          "Cast"
+	        		"Aggression"    "100"
+				}
+			}
+			"OffensiveAbilities"
+			{
+	    		"Ability2"                
+	   			{
+	        		"Name"              "ion_shell_datadriven"
+	        		"Damage"            "1"
+	        		"Debuff"            "1"
+	        		"Radius"			"750"
+	    		}
+			}
+		}
+	}
+	"tower_storm_caller"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/creeps/neutral_creeps/n_creep_harpy_a/n_creep_harpy_a.vmdl"
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"30.0"				
+		"AttackDamageMax"			"30.0"				
+		"AttackRate"				"0.3"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"500"				
+		"AttackRange"				"500"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/units/heroes/hero_arc_warden/arc_warden_base_attack.vpcf"	
+		"ProjectileSpeed"			"3000"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"	
+	
+		"BountyGoldMin"				"40.0"
+		"BountyGoldMax"				"40.0"
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"					
+		"HealthBarOffset"			"100"					
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+		
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		
+	}
+	"tower_thunder_rod"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/items/wards/chen_ward/chen_ward.vmdl"
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+		"Ability2"					"thunder_rod_datadriven"
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"1.0"				
+		"AttackDamageMax"			"1.0"				
+		"AttackRate"				"2"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"350"				
+		"AttackRange"				"350"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_trail_base_elec.vpcf"	
+		"ProjectileSpeed"			"2000"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"	
+	
+		"BountyGoldMin"				"200.0"
+		"BountyGoldMax"				"200.0"
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"					
+		"HealthBarOffset"			"100"					
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+		
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		
+	}
 	"sheep"
 	{
-		//-----------------------------------------------------------------
-		// General
-		//-----------------------------------------------------------------
+		"Model"							"models/items/hex/sheep_hex/sheep_hex.vmdl" //model
+		"BaseClass"             		"npc_dota_creature"
+		"Level"							"7"
+		"ModelScale"					"1"
 	
-		"BaseClass"					"npc_dota_creature"	//DO NOT CHANGE
-		"Level"						"25"
-		"ModelScale"				"1"
-		"MinimapIcon"               "minimap_candybucket"
-		"MinimapIconSize"           "1000"
-		"Model"						"models/items/hex/sheep_hex/sheep_hex.vmdl"	//find model in the Asset Browser (Hammer)... remember to PRECACHE
+		"MovementCapabilities"          "DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"					"200"
 	
-		"DisableClumpingBehavior"   "0"
-		//"IsAncient"                "1"
-				
-		//-----------------------------------------------------------------
-		// Abilities (Will revise)
-		//-----------------------------------------------------------------
-	
-		"AbilityLayout"				"4"
-		//"Ability1"				"tower_sell_building"
-		//"Ability2"				"sven_great_cleave_datadriven"
-		//"Ability3"				""
-		//"Ability4"				""
-	
-		//-----------------------------------------------------------------
-		// Armor
-		//-----------------------------------------------------------------
-	
-		"ArmorPhysical"				"5"		
-		"MagicalResistance"			"0"
-	
-		//-----------------------------------------------------------------	
-		// Attack
-		//-----------------------------------------------------------------
-	
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-	
-		//-----------------------------------------------------------------
-		// Bounty (Max bounty determines selling price)
-		//-----------------------------------------------------------------
-	
-		"BountyGoldMin"				"1"
-		"BountyGoldMax"				"1"
-	
-	
-		//-----------------------------------------------------------------	
-		// Bounds
-		//-----------------------------------------------------------------
-	
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	//DO NOT CHANGE
-		"RingRadius"				"100"					//DO NOT CHANGE
-		"HealthBarOffset"			"100"					//DO NOT CHANGE
-	
-	
-		//-----------------------------------------------------------------	
-		// Movement
-		//-----------------------------------------------------------------
-	
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"200"		// Speed
-		"MovementTurnRate"          "10"		// Turning rate.
-		"FollowRange"               "0"
-	
-		//-----------------------------------------------------------------
-		// Status
-		//-----------------------------------------------------------------
-	
-		"StatusHealth"				"500"			
-		"StatusHealthRegen"			"0"				
-		"StatusMana"				"100"			//change base mana; generally do not change
-		"StatusManaRegen"			"0"				//change mana regen; generally do not change
-		//"StatusStartingMana"		"[int]"			//change starting mana; rarely used
-	
-	
-		//-----------------------------------------------------------------
-		// Armor and Attack Types
-		//-----------------------------------------------------------------
-	
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"	//attack type; basic (normal), pierce, siege, light (chaos), hero
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HEAVY"	//armor type; soft(unarmored), weak (light), basic (medium), strong (heavy), structure (fortified), hero
-	
-		//-----------------------------------------------------------------
-		// Unit Relationship Class (Probably deprecated)
-		//-----------------------------------------------------------------
-	
-		"TeamName"					"DOTA_TEAM_NEUTRALS"						//DO NOT CHANGE
-		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT" 	//DO NOT CHANGE
-		
-		//-----------------------------------------------------------------	
-		// Vision
-		//-----------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1800"		// Range of vision at night time.
-	
-	}
-	//=================================================================================	
-	// Creep Wave 1: Pigs
-	//=================================================================================
-	"pigs"
-	{
-		//-----------------------------------------------------------------
-		// General
-		//-----------------------------------------------------------------
-	
-		"BaseClass"					"npc_dota_creature"	//DO NOT CHANGE
-		"Level"						"25"
-		"ModelScale"				"1"
-		"MinimapIcon"               "minimap_candybucket"
-		"MinimapIconSize"           "1000"
-		"Model"						"models/courier/mighty_boar/mighty_boar_wings.vmdl"	//find model in the Asset Browser (Hammer)... remember to PRECACHE
-	
-		"DisableClumpingBehavior"   "0"
-		//"IsAncient"                "1"
-				
-		//-----------------------------------------------------------------
-		// Abilities (Will revise)
-		//-----------------------------------------------------------------
-	
-		"AbilityLayout"				"4"
-		//"Ability1"				"tower_sell_building"
-		//"Ability2"				"sven_great_cleave_datadriven"
-		//"Ability3"				""
-		//"Ability4"				""
-	
-		//-----------------------------------------------------------------
-		// Armor
-		//-----------------------------------------------------------------
-	
-		"ArmorPhysical"				"5"		
-		"MagicalResistance"			"0"
-	
-		//-----------------------------------------------------------------	
-		// Attack
-		//-----------------------------------------------------------------
-	
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-	
-		//-----------------------------------------------------------------
-		// Bounty (Max bounty determines selling price)
-		//-----------------------------------------------------------------
-	
-		"BountyGoldMin"				"1"
-		"BountyGoldMax"				"1"
-	
-	
-		//-----------------------------------------------------------------	
-		// Bounds
-		//-----------------------------------------------------------------
-	
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	//DO NOT CHANGE
-		"RingRadius"				"100"					//DO NOT CHANGE
-		"HealthBarOffset"			"100"					//DO NOT CHANGE
-	
-	
-		//-----------------------------------------------------------------	
-		// Movement
-		//-----------------------------------------------------------------
-	
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"			//ground, fly
-		"MovementSpeed"				"300"		// Speed
-		"MovementTurnRate"          "10"		// Turning rate.
-		"FollowRange"               "0"
-	
-		//-----------------------------------------------------------------
-		// Status
-		//-----------------------------------------------------------------
-	
-		"StatusHealth"				"500"			
-		"StatusHealthRegen"			"0"				
-		"StatusMana"				"100"			//change base mana; generally do not change
-		"StatusManaRegen"			"0"				//change mana regen; generally do not change
-		//"StatusStartingMana"		"[int]"			//change starting mana; rarely used
-	
-	
-		//-----------------------------------------------------------------
-		// Armor and Attack Types
-		//-----------------------------------------------------------------
-	
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"	//attack type; basic (normal), pierce, siege, light (chaos), hero
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HEAVY"	//armor type; soft(unarmored), weak (light), basic (medium), strong (heavy), structure (fortified), hero
-	
-		//-----------------------------------------------------------------
-		// Unit Relationship Class (Probably deprecated)
-		//-----------------------------------------------------------------
-	
-		"TeamName"					"DOTA_TEAM_NEUTRALS"						//DO NOT CHANGE
-		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT" 	//DO NOT CHANGE
-		
-		//-----------------------------------------------------------------	
-		// Vision
-		//-----------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1800"		// Range of vision at night time.
-	
+		"CombatClassAttack"				"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"				"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"			"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	}
 	//=====================================================================
 	// Tower: Nature Pool
 	//=====================================================================
 	
-	"tower_nature_pool"
+	"tower_naturepool"
 	{
 	
 		//-----------------------------------------------------------------
@@ -559,6 +758,69 @@
 		"VisionNighttimeRange"		"1800"
 		
 	}
+	
+	"tower_shock_tower"
+	{
+	
+		"ConstructionSize"			"2"						
+		"BlockPathingSize"			"2"						
+		"DisableTurning"			"0"						
+	
+		"BaseClass"					"npc_dota_creature"		
+		"Level"						"1"						
+		"Model"						"models/heroes/techies/fx_techiesfx_stasis.vmdl"
+		"ModelScale"				"0.6"							
+		"HasInventory"				"1"						
+		"ConsideredHero"			"1"						
+	
+		"AbilityLayout"				"4"
+		"Ability1"					"tower_sell_building"
+		"Ability2"					"upgrade_static_purger"
+		"Ability3"					"upgrade_static_shocker"
+	
+		"ArmorPhysical"				"5"					
+		"MagicalResistance"			"0"					
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+		"AttackDamageMin"			"5.0"				
+		"AttackDamageMax"			"5.0"				
+		"AttackRate"				"0.3"				
+		"AttackAnimationPoint"		"0.0"				
+		"AttackAcquisitionRange"	"600"				
+		"AttackRange"				"600"				
+		"AttackRangeBuffer"         "100"     			
+	
+		"ProjectileModel"			"particles/units/heroes/hero_zuus/zuus_arc_lightning_b.vpcf"	
+		"ProjectileSpeed"			"3000"				
+	
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"	
+	
+		"BountyGoldMin"				"10.0"
+		"BountyGoldMax"				"10.0"
+	
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"RingRadius"				"100"					
+		"HealthBarOffset"			"100"					
+	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+		"MovementSpeed"				"0"							
+	
+		"StatusHealth"				"100"			
+		"StatusHealthRegen"			"0"				
+		"StatusMana"				"100"			
+		"StatusManaRegen"			"0"				
+		
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+	
+		"TeamName"					"DOTA_TEAM_NEUTRALS"						
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+	
+		"VisionDaytimeRange"		"1800"		
+		"VisionNighttimeRange"		"1800"		
+	
+		
+	}
 	//=====================================================================
 	// Template for Basic Towers
 	// Instructions:
@@ -619,8 +881,8 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"			"38"	
 		"AttackDamageMax"			"47"
-		"AttackRate"				"0.07"				// Speed of attack
-		"AttackAnimationPoint"		"0"				
+		"AttackRate"				"0"				// Speed of attack
+		"AttackAnimationPoint"		"0.6"				
 		"AttackAcquisitionRange"	"700"			
 		"AttackRange"				"700"			
 		"AttackRangeBuffer"         "100"
@@ -689,23 +951,5 @@
 	
 		//"vscripts"				[name_of_script_file]	//optional
 		
-		//-----------------------------------------------------------------	
-		// Cosmetics
-		//-----------------------------------------------------------------
-	
-	    "Creature"
-	    {
-	        "AttachWearables" // Default npc_dota_hero_lone_druid
-	        {
-	            "1" { "ItemDef" "108" } // Lone Druid's Shoulder Armor
-	            "2" { "ItemDef" "109" } // Lone Druid's Bracers
-	            "3" { "ItemDef" "8368" } // Lone Druid's Spirit Bear
-	            "4" { "ItemDef" "219" } // Lone Druid's Weapon
-	            "5" { "ItemDef" "8648" } // Lone Druid's True Form
-	            "6" { "ItemDef" "110" } // Lone Druid's Tunic
-	            "7" { "ItemDef" "107" } // Lone Druid's Hair
-	        }
-	    }
-	
 	}
 }
