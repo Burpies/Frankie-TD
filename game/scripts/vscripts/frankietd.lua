@@ -41,6 +41,7 @@ require('internal/events')
 require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core frankietd files.
 require('events')
+require('spawnwaves')
 
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
@@ -115,30 +116,6 @@ function FrankieTD:OnHeroInGame(hero)
   hero:AddAbility("example_ability")]]
 end
 
---[[deprecated: basic spawn
-function SpawnCreeps()
-    local point = Entities:FindByName( nil, "spawnerino"):GetAbsOrigin()
-    local unit = CreateUnitByName("sheep", point, true, nil, nil, DOTA_TEAM_NEUTRALS)
-end 
---]]
-
-
--- spawn creep function
-function SpawnCreeps()
-  local point = Entities:FindByName(nil,"spawnerino"):GetAbsOrigin()
-  local waypoint = Entities:FindByName(nil,"waypoint"):GetAbsOrigin()
-  local units_to_spawn = 10
-  for i=1, units_to_spawn do
-    Timers:CreateTimer(function()
-      local unit = CreateUnitByName("sheep", point+RandomVector(RandomInt(100,200)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-      ExecuteOrderFromTable({ UnitIndex = unit:GetEntityIndex(),
-                              OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-                              Position = waypoint, Queue = true})
-      print("Move ", unit:GetEntityIndex(), " to ", waypoint)
-    end)
-  end
-end
-
 --[[
   This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this point,
   gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
@@ -148,16 +125,13 @@ function FrankieTD:OnGameInProgress()
   DebugPrint("[FRANKIETD] The game has officially begun")
 
   local repeat_interval = 30 --rerun this timer every [repeat_interval] game-time seconds
-  local start_after = 30 --start this timer [start_after] game-time seconds later
+  local start_after = 5 --start this timer [start_after] game-time seconds later
 
   Timers:CreateTimer(start_after, 
     function()
       SpawnCreeps()
-      return repeat_interval  
     end)
 end
-
-
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later

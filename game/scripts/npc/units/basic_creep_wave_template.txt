@@ -1,0 +1,109 @@
+//=====================================================================
+// Template for Creep Waves
+// Instructions:
+// 1. Read comments for instructions 
+// 2. Replace values 
+// 3. Remove end-of-line comments when finished
+// Full KV Docs - https://moddota.com/forums/discussion/224/datadriven-units 
+//=====================================================================
+
+//=================================================================================	
+// Creep Wave 1: creep_name
+//=================================================================================
+"creep_name"
+{
+	//-----------------------------------------------------------------
+	// General
+	//-----------------------------------------------------------------
+
+	"BaseClass"					"npc_dota_creature"	//DO NOT CHANGE
+	"Level"						"25"
+	"ModelScale"				"1"
+	"MinimapIcon"               "minimap_candybucket"
+	"MinimapIconSize"           "500"
+	"Model"						"models/courier/mighty_boar/mighty_boar_wings.vmdl"	//find model in the Asset Browser (Hammer)... remember to PRECACHE
+
+	"DisableClumpingBehavior"   "0"
+	//"IsAncient"                 "1"
+			
+	//-----------------------------------------------------------------
+	// Abilities (Will revise)
+	//-----------------------------------------------------------------
+
+	"AbilityLayout"				"4"
+	//"Ability1"				"tower_sell_building"
+	//"Ability2"				"sven_great_cleave_datadriven"
+	//"Ability3"				""
+	//"Ability4"				""
+
+	//-----------------------------------------------------------------
+	// Armor
+	//-----------------------------------------------------------------
+
+	"ArmorPhysical"				"5"		
+	"MagicalResistance"			"0"
+
+	//-----------------------------------------------------------------	
+	// Attack
+	//-----------------------------------------------------------------
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+
+	//-----------------------------------------------------------------
+	// Bounty (Max bounty determines selling price)
+	//-----------------------------------------------------------------
+
+	"BountyGoldMin"				"1"
+	"BountyGoldMax"				"1"
+
+
+	//-----------------------------------------------------------------	
+	// Bounds
+	//-----------------------------------------------------------------
+
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	//DO NOT CHANGE
+	"RingRadius"				"100"					//DO NOT CHANGE
+	"HealthBarOffset"			"100"					//DO NOT CHANGE
+
+
+	//-----------------------------------------------------------------	
+	// Movement
+	//-----------------------------------------------------------------
+
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+	"MovementSpeed"				"350"		// Speed
+	"MovementTurnRate"          "10"		// Turning rate.
+	"FollowRange"               "0"
+
+	//-----------------------------------------------------------------
+	// Status
+	//-----------------------------------------------------------------
+
+	"StatusHealth"				"500"			
+	"StatusHealthRegen"			"0"				
+	"StatusMana"				"100"			//change base mana; generally do not change
+	"StatusManaRegen"			"0"				//change mana regen; generally do not change
+	//"StatusStartingMana"		"[int]"			//change starting mana; rarely used
+
+
+	//-----------------------------------------------------------------
+	// Armor and Attack Types
+	//-----------------------------------------------------------------
+
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"	//attack type; basic (normal), pierce, siege, light (chaos), hero
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HEAVY"	//armor type; soft(unarmored), weak (light), basic (medium), strong (heavy), structure (fortified), hero
+
+	//-----------------------------------------------------------------
+	// Unit Relationship Class (Probably deprecated)
+	//-----------------------------------------------------------------
+
+	"TeamName"					"DOTA_TEAM_NEUTRALS"						//DO NOT CHANGE
+	"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT" 	//DO NOT CHANGE
+	
+	//-----------------------------------------------------------------	
+	// Vision
+	//-----------------------------------------------------------------
+	"VisionDaytimeRange"		"1800"		// Range of vision during day light.
+	"VisionNighttimeRange"		"1800"		// Range of vision at night time.
+
+}
