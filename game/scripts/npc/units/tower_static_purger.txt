@@ -1,0 +1,75 @@
+"tower_static_purger"
+{
+
+	"ConstructionSize"			"2"						
+	"BlockPathingSize"			"2"						
+	"DisableTurning"			"0"						
+
+	"BaseClass"					"npc_dota_creature"		
+	"Level"						"1"						
+	"Model"						"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl" 
+	"ModelScale"				"0.6"							
+	"HasInventory"				"1"						
+	"ConsideredHero"			"1"						
+
+
+	"AbilityLayout"				"4"
+	"Ability1"					"tower_sell_building"
+	"Ability2"					"purge_datadriven"
+	//"Ability3"				""
+	//"Ability4"				""
+
+	"ArmorPhysical"				"5"					
+	"MagicalResistance"			"0"					
+
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"	
+	"AttackDamageMin"			"10"				
+	"AttackDamageMax"			"10"				
+	"AttackRate"				"0.2"				
+	"AttackAnimationPoint"		"0.0"				
+	"AttackAcquisitionRange"	"750"				
+	"AttackRange"				"750"				
+	"AttackRangeBuffer"         "100"     			
+
+	"ProjectileModel"			"particles/neutral_fx/satyr_hellcaller_launch.vpcf"	
+	"ProjectileSpeed"			"2000"				
+
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"		
+
+
+	"BountyGoldMin"				"10.0"
+	"BountyGoldMax"				"10.0"
+
+
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+	"RingRadius"				"100"				
+	"HealthBarOffset"			"100"				
+
+
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"	
+	"MovementSpeed"				"0"							
+
+
+	"StatusHealth"				"100"			
+	"StatusHealthRegen"			"0"				
+	"StatusMana"				"100"			
+	"StatusManaRegen"			"0"				
+
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"		
+
+
+	"TeamName"					"DOTA_TEAM_NEUTRALS"						
+	"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING" 	
+
+	"VisionDaytimeRange"		"1800"		
+	"VisionNighttimeRange"		"1800"		
+
+	//-----------------------------------------------------------------	
+	// LUA Script
+	//-----------------------------------------------------------------
+
+	//"vscripts"				[name_of_script_file]	//optional
+	
+}
